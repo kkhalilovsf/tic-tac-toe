@@ -1,8 +1,5 @@
-import {boardLength, board} from './app.js'
-import {gameOver, clickCounter} from './gameActions.js'
-
-let X = 'X';
-
+import { boardLength, board } from './app.js';
+import { gameOver } from './gameActions.js';
 export function identifyWinner(_self) {
   let xIndex = _self.getAttribute('x');
   let yIndex = _self.getAttribute('y');
@@ -14,9 +11,8 @@ export function identifyWinner(_self) {
   let zy = 0;
   let zDiagL = 0;
   let zDiagR = 0;
-  
-  //check if board are full 
-  if(clickCounter === 9) gameOver();
+  let X = 'X';
+  let isEmpty = 0;
 
   //paste X or 0 in board array
   _self.getAttribute('cross') === 'true'
@@ -43,21 +39,30 @@ export function identifyWinner(_self) {
       board[i][j] == '0' && i + j === boardLength - 1 ? zDiagR++ : 0;
     }
 
-    console.log('cx ' + cx, 'cy ' + cy, 'zx ' + zx, 'zy ' + zy);
-    console.log('cDiagL ' + cDiagL, 'cDiagR ' + cDiagR, 'zDiagL ' + zDiagL, 'zDiagR ' + zDiagR);
+    //check if array have empty elements
+    //board[i].includes(undefined) ? isEmpty++ : (isEmpty = 0);
+
+
+
+    
+    //console.log('cx ' + cx, 'cy ' + cy, 'zx ' + zx, 'zy ' + zy);
+    //console.log('cDiagL ' + cDiagL, 'cDiagR ' + cDiagR, 'zDiagL ' + zDiagL, 'zDiagR ' + zDiagR);
 
     if (
-      cx === 3 ||
-      cy === 3 ||
-      zx === 3 ||
-      zy === 3 ||
-      cDiagL === 3 ||
-      cDiagR === 3 ||
-      zDiagL === 3 ||
-      zDiagR === 3
+      cx === boardLength ||
+      cy === boardLength ||
+      zx === boardLength ||
+      zy === boardLength ||
+      cDiagL === boardLength ||
+      cDiagR === boardLength ||
+      zDiagL === boardLength ||
+      zDiagR === boardLength
     ) {
       gameOver();
       break;
     }
   }
+  console.log(isEmpty);
+
+  if (isEmpty === 0) gameOver();
 }

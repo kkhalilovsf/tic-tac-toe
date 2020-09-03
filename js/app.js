@@ -1,19 +1,21 @@
 import {setGameEvents} from './gameActions.js';
 
-
+//set board size (can be changed)
 export let boardLength = 3;
 export let board;
 
 export function createGame() {
-  board = [
-    [, ,],
-    [, ,],
-    [, ,],
-  ];
-
   const mainLayout = document.querySelector('.main-layout');
 
+  //create board
+  board = new Array(boardLength)
 
+  for (let i = 0; i < board.length; i++) {
+    board[i] = new Array(3);
+  }
+
+
+  
   function createBoxes(boardLength, j) {
     let gameBoxes = [];
 

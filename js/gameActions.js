@@ -5,7 +5,6 @@ const alert = document.querySelector('.alert');
 const btnReload = document.querySelector('.btn__reload');
 let isCross = true;
 
-export let clickCounter = 0;
 
 export function gameOver() {
   const game = document.querySelector('.game');
@@ -17,10 +16,16 @@ export function gameOver() {
 
 export function setGameEvents() {
   const boxes = document.querySelectorAll('.game__box');
+  const game = document.querySelector('.game');
   
+
   btnReload.onclick = () => {
     alert.classList.remove('show');
-    createGame();
+    game.classList.add('game-reload');
+
+    setTimeout(function() {
+      createGame();
+    }, 250); 
   };
 
   boxes.forEach((box) => {
@@ -47,8 +52,6 @@ export function setGameEvents() {
     box.onmousedown = function () {
       let _self = this;
 
-      clickCounter += 1;
-
       if (this.classList.contains('selected')) {
         return false;
       } else if (isCross) {
@@ -56,7 +59,7 @@ export function setGameEvents() {
         this.classList.add('selected');
         this.setAttribute('cross', isCross);
 
-        identifyWinner(_self, isCross, clickCounter);
+        identifyWinner(_self, isCross);
 
         return (isCross = false);
       } else {
@@ -64,7 +67,7 @@ export function setGameEvents() {
         this.classList.add('selected');
         this.setAttribute('cross', isCross);
 
-        identifyWinner(_self, isCross, clickCounter);
+        identifyWinner(_self, isCross);
 
         return (isCross = true);
       }

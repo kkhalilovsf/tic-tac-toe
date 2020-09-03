@@ -7,7 +7,7 @@
   --game-element-radius-md: 20px;
   --game-element-radius-lg: 30px;
   --box-margin: 0.5rem;
-  --box-width: 160px;
+  --box-width: 140px;
   --box-width-sm: 80px;
   --box-width-md: 100px;
   --box-width-lg: 120px;
@@ -61,6 +61,20 @@ body {
 
 .main-layout .game.game-over * {
   pointer-events: none;
+}
+
+.main-layout .game.game-reload .game__box {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.main-layout .game.game-reload .game__element {
+  -webkit-transition: -webkit-transform 0.25s ease-in-out;
+  transition: -webkit-transform 0.25s ease-in-out;
+  transition: transform 0.25s ease-in-out;
+  transition: transform 0.25s ease-in-out, -webkit-transform 0.25s ease-in-out;
+  -webkit-transform: scale(0) !important;
+          transform: scale(0) !important;
 }
 
 @media (max-width: 1199.98px) {
@@ -282,6 +296,7 @@ body {
   position: absolute;
   top: -5rem;
   left: 50%;
+  background-color: #fff;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
   -webkit-transition: all 0.2s ease-in-out;
@@ -341,15 +356,15 @@ body {
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
 }
 
-.btn__primary {
+.btn__success {
   color: #fff;
-  background-color: #8699c2;
-  border-color: #8699c2;
+  background-color: #26dc00;
+  border-color: #26dc00;
 }
 
-.btn__primary:hover {
-  background-color: #607fc2;
-  border-color: #607fc2;
+.btn__success:hover {
+  background-color: #24d100;
+  border-color: #24d100;
 }
 
 .ml-auto {
