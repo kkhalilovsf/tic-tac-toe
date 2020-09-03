@@ -44,7 +44,7 @@ export function identifyWinner(_self) {
 
 
 
-    
+
     //console.log('cx ' + cx, 'cy ' + cy, 'zx ' + zx, 'zy ' + zy);
     //console.log('cDiagL ' + cDiagL, 'cDiagR ' + cDiagR, 'zDiagL ' + zDiagL, 'zDiagR ' + zDiagR);
 
@@ -64,5 +64,5 @@ export function identifyWinner(_self) {
   }
   console.log(isEmpty);
 
-  if (isEmpty === 0) gameOver();
+  //if (isEmpty === 0) gameOver();
 }
