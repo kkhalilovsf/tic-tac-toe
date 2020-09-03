@@ -1,0 +1,63 @@
+import {boardLength, board} from './app.js'
+import {gameOver, clickCounter} from './gameActions.js'
+
+let X = 'X';
+
+export function identifyWinner(_self) {
+  let xIndex = _self.getAttribute('x');
+  let yIndex = _self.getAttribute('y');
+  let cx = 0;
+  let cy = 0;
+  let cDiagL = 0;
+  let cDiagR = 0;
+  let zx = 0;
+  let zy = 0;
+  let zDiagL = 0;
+  let zDiagR = 0;
+  
+  //check if board are full 
+  if(clickCounter === 9) gameOver();
+
+  //paste X or 0 in board array
+  _self.getAttribute('cross') === 'true'
+    ? board[yIndex].splice(xIndex, 1, X)
+    : board[yIndex].splice(xIndex, 1, 0);
+
+  //check win combination
+  for (let i = 0; i < boardLength; i++) {
+    for (let j = 0; j < boardLength; j++) {
+      //x
+      board[j][i] == 'X' ? cx++ : (cx = 0);
+      board[j][i] == '0' ? zx++ : (zx = 0);
+
+      //y
+      board[i][j] == 'X' ? cy++ : (cy = 0);
+      board[i][j] == '0' ? zy++ : (zy = 0);
+
+      //diagL
+      board[i][j] == 'X' && i === j ? cDiagL++ : 0;
+      board[i][j] == '0' && i === j ? zDiagL++ : 0;
+
+      //diagR
+      board[i][j] == 'X' && i + j === boardLength - 1 ? cDiagR++ : 0;
+      board[i][j] == '0' && i + j === boardLength - 1 ? zDiagR++ : 0;
+    }
+
+    console.log('cx ' + cx, 'cy ' + cy, 'zx ' + zx, 'zy ' + zy);
+    console.log('cDiagL ' + cDiagL, 'cDiagR ' + cDiagR, 'zDiagL ' + zDiagL, 'zDiagR ' + zDiagR);
+
+    if (
+      cx === 3 ||
+      cy === 3 ||
+      zx === 3 ||
+      zy === 3 ||
+      cDiagL === 3 ||
+      cDiagR === 3 ||
+      zDiagL === 3 ||
+      zDiagR === 3
+    ) {
+      gameOver();
+      break;
+    }
+  }
+}
