@@ -3,7 +3,6 @@ import { createGame } from './app.js';
 
 let isCross = true;
 
-
 function toggleAlert(toggle) {
   document.querySelector('.alert').classList.toggle('show', toggle);
 };
@@ -26,7 +25,7 @@ export function setGameEvents() {
     }, 250);
   });
 
-  //set events to game elements (boxes)
+  //set events to game elements(boxes)
   document.querySelectorAll('.game__box').forEach((box) => {
     box.addEventListener('mouseover', function() {
       if (this.classList.contains('selected')) {

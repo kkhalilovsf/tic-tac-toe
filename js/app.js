@@ -1,16 +1,17 @@
 import {setGameEvents} from './gameEvents.js';
 
 //set board length (can be changed)
-export let boardLength = 3;
+//and board will be reconstructed. but view is not so good
+export let boardLength = 3; 
 export let board;
 
 export function createGame() {
   const mainLayout = document.querySelector('.main-layout');
 
-  //create board
+  //create pseudo board to check combinations
   board = new Array(boardLength);
 
-  for (let i = 0; i < board.length; i++) {
+  for (let i = 0; i < boardLength; i++) {
     board[i] = new Array(3);
   }
 
