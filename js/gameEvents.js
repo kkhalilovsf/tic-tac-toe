@@ -1,5 +1,5 @@
 import { identifyWinner } from './gameLogics.js';
-import { createGame } from './app.js';
+import { createGame } from './createGame.js';
 
 let isCross = true;
 
