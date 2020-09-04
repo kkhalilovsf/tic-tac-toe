@@ -1,5 +1,6 @@
 import { boardLength, board } from './app.js';
-import { gameOver } from './gameActions.js';
+import { gameOver } from './gameEvents.js';
+
 export function identifyWinner(_self) {
   let xIndex = _self.getAttribute('x');
   let yIndex = _self.getAttribute('y');
@@ -40,10 +41,7 @@ export function identifyWinner(_self) {
     }
 
     //check if array have empty elements
-    //board[i].includes(undefined) ? isEmpty++ : (isEmpty = 0);
-
-
-
+    board[i].includes(undefined) ? isEmpty++ : 0;
 
     //console.log('cx ' + cx, 'cy ' + cy, 'zx ' + zx, 'zy ' + zy);
     //console.log('cDiagL ' + cDiagL, 'cDiagR ' + cDiagR, 'zDiagL ' + zDiagL, 'zDiagR ' + zDiagR);
@@ -62,7 +60,5 @@ export function identifyWinner(_self) {
       break;
     }
   }
-  console.log(isEmpty);
-
-  //if (isEmpty === 0) gameOver();
+  if (isEmpty === 0) gameOver();
 }

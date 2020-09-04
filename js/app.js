@@ -1,6 +1,6 @@
-import {setGameEvents} from './gameActions.js';
+import {setGameEvents} from './gameEvents.js';
 
-//set board size (can be changed)
+//set board length (can be changed)
 export let boardLength = 3;
 export let board;
 
@@ -8,14 +8,12 @@ export function createGame() {
   const mainLayout = document.querySelector('.main-layout');
 
   //create board
-  board = new Array(boardLength)
+  board = new Array(boardLength);
 
   for (let i = 0; i < board.length; i++) {
     board[i] = new Array(3);
   }
 
-
-  
   function createBoxes(boardLength, j) {
     let gameBoxes = [];
 
@@ -61,7 +59,7 @@ export function createGame() {
   //create htmlGameGrid
   mainLayout.innerHTML = markup;
 
-  //set events
+  //set events after html is created 
   setGameEvents();
 
 }
