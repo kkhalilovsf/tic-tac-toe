@@ -7,17 +7,21 @@ function toggleAlert(toggle) {
   document.querySelector('.alert').classList.toggle('show', toggle);
 };
 
-export function gameOver() {
-  document.querySelector('.game').classList.toggle('game-over');
+function gameReload() {
+  document.querySelector('.game__board').classList.add('game-reload'); 
+}
+
+function gameOver() {
+  document.querySelector('.game__board').classList.toggle('game-over');
 
   toggleAlert(true);
 }
 
-export function setGameEvents() {
+function setGameMouseEvents() {
   //reload btn
   document.querySelector('.btn__reload__game').addEventListener('click', function() {
-    document.querySelector('.game').classList.add('game-reload'); 
-
+    
+    gameReload();
     toggleAlert(false);
 
     setTimeout(function () {
@@ -72,3 +76,5 @@ export function setGameEvents() {
     });
   });
 }
+
+export {gameOver, setGameMouseEvents};

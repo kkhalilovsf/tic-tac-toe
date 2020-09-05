@@ -1,11 +1,10 @@
-import { setGameEvents } from './gameEvents.js';
+import { setGameMouseEvents } from './gameEvents.js';
 
-const mainLayout = document.querySelector('.main-layout');
+const gameContainer = document.querySelector('.game');
+let boardLength = 3;
+let board;
 
-export let boardLength = 3;
-export let board;
-
-export function createGame() {
+function createGame() {
   //create pseudo board to check combinations
   board = [...new Array(boardLength)].map(() => [...new Array(boardLength)]);
 
@@ -44,15 +43,17 @@ export function createGame() {
 
   function createGameBoard() {
     return `
-      <div class="game">
+      <div class="game__board">
         ${createGameRows()}
       </div>
     `;
   }
 
   //create htmlGameGrid
-  mainLayout.innerHTML = createGameBoard();
+  gameContainer.innerHTML = createGameBoard();
 
   //set events after html is created
-  setGameEvents();
+  setGameMouseEvents();
 }
+
+export {boardLength, board, createGame};

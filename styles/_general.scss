@@ -1,0 +1,193 @@
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100vh;
+  font-size: var(--font-size-default);
+  line-height: var(--line-height-default);
+  background-color: var(--bg-color-default);
+}
+
+* {
+  box-sizing: border-box;
+  outline: none;
+}
+
+.main__layout {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.game__board {
+  padding: 0.5rem;
+  overflow: hidden;
+  border-radius: var(--game-element-radius);
+  background: var(--main-bg-color);
+  box-shadow: 12px 12px 24px #489dcf, -12px -12px 24px #62d5ff;
+  width: var(--game-width);
+  height: var(--game-height);
+  &.game-over {
+    * {
+      pointer-events: none;
+    }
+  }
+  &.game-reload {
+    .game__box {
+      box-shadow: none;
+    }
+    .game__element {
+      transition: transform 0.25s ease-in-out, opacity 0.25s;
+      opacity: 0;
+      transform: scale(0);
+    }
+  }
+  @media (max-width: 1199.98px) {
+    border-radius: var(--game-element-radius-lg);
+  }
+  @media (max-width: 991.98px) {
+    border-radius: var(--game-element-radius-md);
+  }
+}
+
+.game__row {
+  width: var(--game-width);
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  &:first-child {
+    .game__box {
+      &:first-child {
+        border-top-left-radius: var(--game-element-radius);
+
+        @media (max-width: 1199.98px) {
+          border-top-left-radius: var(--game-element-radius-lg);
+        }
+        @media (max-width: 991.98px) {
+          border-top-left-radius: var(--game-element-radius-md);
+        }
+      }
+      &:last-child {
+        border-top-right-radius: var(--game-element-radius);
+
+        @media (max-width: 1199.98px) {
+          border-top-right-radius: var(--game-element-radius-lg);
+        }
+        @media (max-width: 991.98px) {
+          border-top-right-radius: var(--game-element-radius-md);
+        }
+      }
+    }
+  }
+  &:last-child {
+    .game__box {
+      margin-bottom: 0;
+      &:first-child {
+        border-bottom-left-radius: var(--game-element-radius);
+
+        @media (max-width: 1199.98px) {
+          border-bottom-left-radius: var(--game-element-radius-lg);
+        }
+        @media (max-width: 991.98px) {
+          border-bottom-left-radius: var(--game-element-radius-md);
+        }
+      }
+      &:last-child {
+        border-bottom-right-radius: var(--game-element-radius);
+
+        @media (max-width: 1199.98px) {
+          border-bottom-right-radius: var(--game-element-radius-lg);
+        }
+        @media (max-width: 991.98px) {
+          border-bottom-right-radius: var(--game-element-radius-md);
+        }
+      }
+    }
+  }
+}
+
+.game__box {
+  margin-right: var(--box-margin);
+  margin-bottom: var(--box-margin);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.27);
+  background: var(--box-bg-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--box-width);
+  height: var(--box-height);
+  cursor: pointer;
+  transition: box-shadow 0.2s ease-in-out;
+  &:last-child {
+    margin-right: 0;
+  }
+  &:hover {
+    background-color: var(--box-bg-color-darken);
+  }
+  &.selected {
+    box-shadow: inset 6px 6px 12px #489dcf, inset -6px -6px 12px #62d5ff;
+    .game__element {
+      transform: scale(0.8);
+    }
+  }
+  @media (max-width: 1199.98px) {
+    width: var(--box-width-lg);
+    height: var(--box-height-lg);
+  }
+  @media (max-width: 991.98px) {
+    width: var(--box-width-md);
+    height: var(--box-height-md);
+  }
+  @media (max-width: 575.98px) {
+    width: var(--box-width-sm);
+    height: var(--box-height-sm);
+  }
+}
+
+.game__element {
+  display: none;
+  transition: transform 0.2s ease-in-out;
+}
+
+.game__element--cross {
+  stroke-width: 5 !important;
+  width: 55px;
+  height: 55px;
+  background: url('../img/cross.svg');
+  &.show {
+    display: block;
+  }
+  @media (max-width: 1199.98px) {
+    width: 45px;
+    height: 45px;
+  }
+  @media (max-width: 991.98px) {
+    width: 35px;
+    height: 35px;
+  }
+}
+
+.game__element--circle {
+  width: 65px;
+  height: 65px;
+  background: url('../img/circle.svg');
+  &.show {
+    display: block;
+  }
+  @media (max-width: 1199.98px) {
+    width: 55px;
+    height: 55px;
+  }
+  @media (max-width: 991.98px) {
+    width: 45px;
+    height: 45px;
+  }
+}
+
+//shortcuts
+.ml-auto {
+  margin-left: auto !important;
+}

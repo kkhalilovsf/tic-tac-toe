@@ -1,0 +1,26 @@
+:root {
+  --font-size-default: 1rem;
+  --line-height-default: 1.5;
+  --bg-color-default: #55b9f3;
+
+  --game-element-radius: 40px;
+  --game-element-radius-md: 20px;
+  --game-element-radius-lg: 30px;
+
+  --box-width: 140px;
+  --box-width-sm: 80px;
+  --box-width-md: 100px;
+  --box-width-lg: 120px;
+
+  --box-height: var(--box-width);
+  --box-height-sm: var(--box-width-sm);
+  --box-height-md: var(--box-width-md);
+  --box-height-lg: var(--box-width-lg);
+
+  --box-margin: 0.5rem;
+  --box-bg-color: var(--bg-color-default);
+  --box-bg-color-darken: #3faae8;
+
+  --alert-font-size-default: 1.5rem;
+  --alert-font-family-default: 'Tahoma', sans-serif;
+}
