@@ -1,4 +1,4 @@
-import {createGame} from './createGame.js';
+import { createGame } from './createGame.js';
 
 
 document.body.onload = createGame;

@@ -77,4 +77,4 @@ function setGameMouseEvents() {
   });
 }
 
-export {gameOver, setGameMouseEvents};
+export { gameOver, setGameMouseEvents };

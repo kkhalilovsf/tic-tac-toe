@@ -56,4 +56,4 @@ function createGame() {
   setGameMouseEvents();
 }
 
-export {boardLength, board, createGame};
+export { boardLength, board, createGame };

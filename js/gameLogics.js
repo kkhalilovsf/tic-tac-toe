@@ -1,5 +1,5 @@
 import { gameOver } from './gameEvents.js';
-import {boardLength, board} from './createGame.js';
+import { boardLength, board } from './createGame.js';
 
 //set board length (can be changed)
 //and board will be reconstructed. but view is not so good
