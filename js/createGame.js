@@ -1,61 +1,58 @@
-import {setGameEvents} from './gameEvents.js';
+import { setGameEvents } from './gameEvents.js';
 
-export let boardLength = 3; 
+const mainLayout = document.querySelector('.main-layout');
+
+export let boardLength = 3;
 export let board;
 
 export function createGame() {
-  const mainLayout = document.querySelector('.main-layout');
   //create pseudo board to check combinations
-   board = new Array(boardLength);
+  board = [...new Array(boardLength)].map(() => [...new Array(boardLength)]);
 
-  for (let i = 0; i < boardLength; i++) {
-    board[i] = new Array(3);
-  }
-
-  function createBoxes(boardLength, j) {
-    let gameBoxes = [];
-
-    for (let i = 0; i < boardLength; i++) {
-      let gameBox = `
-        <div class="game__box"  x="${i}" y="${j}">
+  function createGameBox(rowIndex, boxIndex) {
+    return `
+        <div class="game__box"  data-row-index="${rowIndex}" data-box-index="${boxIndex}">
             <div class="game__element game__element--circle"></div>
             <div class="game__element game__element--cross"></div>
         </div>
       `;
-      gameBoxes.push(gameBox);
-    }
-
-    return gameBoxes;
   }
 
-  function createRows(boardLength) {
-    let gameRows = [];
+  function createGameRow(rowIndex) {
+    return `
+    <div class="game__row">
+      ${createGameBoxes(rowIndex)}
+    </div>
+    `;
+  }
+  
+  function createGameBoxes(rowIndex) {
+    return (
+      [...new Array(boardLength)].map((box, boxIndex) => {
+        return createGameBox(rowIndex, boxIndex);
+      }).join('')
+    );
+  }
 
-    for (let j = 0; j < boardLength; j++) {
-      let gameRow = `
-        <div class="game__row">
-          ${createBoxes(boardLength, j).join('')}
-        </div>
-      `;
-      gameRows.push(gameRow);
-    }
-
-    return gameRows;
+  function createGameRows() {
+    return (
+      [...new Array(boardLength)].map((row, rowIndex) => {
+        return createGameRow(rowIndex);
+      }).join('')
+    );
   }
 
   function createGameBoard() {
-    return (`
+    return `
       <div class="game">
-        ${createRows(boardLength).join('')}
+        ${createGameRows()}
       </div>
-    `);
+    `;
   }
-
 
   //create htmlGameGrid
   mainLayout.innerHTML = createGameBoard();
 
-  //set events after html is created 
+  //set events after html is created
   setGameEvents();
-
 }

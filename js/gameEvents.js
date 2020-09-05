@@ -47,7 +47,7 @@ export function setGameEvents() {
       }
     });
 
-    box.addEventListener('click', function() {
+    box.addEventListener('mousedown', function() {
       let _self = this;
 
       if (this.classList.contains('selected')) {

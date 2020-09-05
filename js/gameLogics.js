@@ -5,8 +5,8 @@ import {boardLength, board} from './createGame.js';
 //and board will be reconstructed. but view is not so good
 
 export function identifyWinner(_self) {
-  let xIndex = _self.getAttribute('x');
-  let yIndex = _self.getAttribute('y');
+  let rowIndex = _self.dataset.rowIndex;
+  let boxIndex = _self.dataset.boxIndex;
   //c means cross 
   //z means zero
   //cx means 'X' counter for x coordinate line 
@@ -23,8 +23,8 @@ export function identifyWinner(_self) {
 
   //paste 'X' or '0' in board array
   _self.getAttribute('cross') === 'true'
-    ? board[yIndex].splice(xIndex, 1, 'X')
-    : board[yIndex].splice(xIndex, 1, '0');
+    ? board[rowIndex].splice(boxIndex, 1, 'X')
+    : board[rowIndex].splice(boxIndex, 1, '0');
 
   //check win combination
   for (let i = 0; i < boardLength; i++) {
