@@ -2,12 +2,9 @@
   --font-size-default: 1rem;
   --line-height-default: 1.5;
   --bg-color-default: #55b9f3;
-  --box-bg-color: var(--bg-color-default);
-  --box-bg-color-darken: #3faae8;
   --game-element-radius: 40px;
   --game-element-radius-md: 20px;
   --game-element-radius-lg: 30px;
-  --box-margin: 0.5rem;
   --box-width: 140px;
   --box-width-sm: 80px;
   --box-width-md: 100px;
@@ -16,21 +13,24 @@
   --box-height-sm: var(--box-width-sm);
   --box-height-md: var(--box-width-md);
   --box-height-lg: var(--box-width-lg);
-  --modal-font: 'Tahoma', sans-serif;
+  --box-margin: 0.5rem;
+  --box-bg-color: var(--bg-color-default);
+  --box-bg-color-darken: #3faae8;
+  --alert-font-size-default: 1.5rem;
+  --alert-font-family-default: 'Tahoma', sans-serif;
 }
 
 .alert {
   width: 500px;
   height: auto;
   position: absolute;
-  top: -5rem;
+  top: 0;
   left: 50%;
   background-color: #fff;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
   -webkit-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
-  opacity: 0;
   padding: 0.75rem 1.25rem;
   margin-bottom: 1rem;
   border: 1px solid transparent;
@@ -45,8 +45,14 @@
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
-  font-size: 1.5rem;
-  font-family: var(--modal-font);
+  font-size: var(--alert-font-size-default);
+  font-family: var(--alert-font-family-default);
+}
+
+.alert.fade {
+  opacity: 0;
+  top: -5rem;
+  pointer-events: none;
 }
 
 .alert.show {
@@ -55,6 +61,7 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  pointer-events: auto;
 }
 
 .alert__primary {
@@ -94,10 +101,6 @@
 .btn__success:hover {
   background-color: #24d100;
   border-color: #24d100;
-}
-
-.ml-auto {
-  margin-left: auto !important;
 }
 
 body {
@@ -371,5 +374,9 @@ body {
     width: 45px;
     height: 45px;
   }
+}
+
+.ml-auto {
+  margin-left: auto !important;
 }
 /*# sourceMappingURL=app.css.map */

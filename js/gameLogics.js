@@ -7,10 +7,10 @@ import { boardLength, board } from './createGame.js';
 export function identifyWinner(_self) {
   let rowIndex = _self.dataset.rowIndex;
   let boxIndex = _self.dataset.boxIndex;
-  //c means cross 
+  //c means cross
   //z means zero
-  //cx means 'X' counter for x coordinate line 
-  //zx means '0' counter for x coordinate line 
+  //cx means 'X' counter for x coordinate line
+  //zx means '0' counter for x coordinate line
   let cx = 0;
   let cy = 0;
   let cDiagL = 0;
@@ -52,19 +52,9 @@ export function identifyWinner(_self) {
     //console.log('cx ' + cx, 'cy ' + cy, 'zx ' + zx, 'zy ' + zy);
     //console.log('cDiagL ' + cDiagL, 'cDiagR ' + cDiagR, 'zDiagL ' + zDiagL, 'zDiagR ' + zDiagR);
 
-    if (
-      cx === boardLength ||
-      cy === boardLength ||
-      zx === boardLength ||
-      zy === boardLength ||
-      cDiagL === boardLength ||
-      cDiagR === boardLength ||
-      zDiagL === boardLength ||
-      zDiagR === boardLength
-    ) {
-      gameOver();
-      break;
-    }
+    [cx, cy, zx, zy, cDiagL, cDiagR, zDiagL, zDiagR].forEach(param => {
+        if(param === boardLength) gameOver();
+    });
   }
   if (isEmpty === 0) gameOver();
 }
